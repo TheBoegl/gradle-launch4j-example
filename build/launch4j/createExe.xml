@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<launch4jConfig>
+  <dontWrapJar>false</dontWrapJar>
+  <headerType>gui</headerType>
+  <jar>build/libs/gradle-launch4j-example.jar</jar>
+  <outfile>zimbus.exe</outfile>
+  <errTitle></errTitle>
+  <cmdLine></cmdLine>
+  <chdir>.</chdir>
+  <priority>normal</priority>
+  <downloadUrl>http://java.com/download</downloadUrl>
+  <supportUrl></supportUrl>
+  <stayAlive>false</stayAlive>
+  <restartOnCrash>false</restartOnCrash>
+  <manifest></manifest>
+  <icon>zimbus.ico</icon>
+  <classPath>
+    <mainClass>com.me.myapp.Driver</mainClass>
+    <cp>lib/zimbus.jar</cp>
+    <cp>lib/groovy-all-2.4.7.jar</cp>
+    <cp>lib/slf4j-api-1.7.24.jar</cp>
+    <cp>lib/slf4j-simple-1.7.24.jar</cp>
+  </classPath>
+  <jre>
+    <path></path>
+    <bundledJre64Bit>false</bundledJre64Bit>
+    <bundledJreAsFallback>false</bundledJreAsFallback>
+    <minVersion>1.8.0</minVersion>
+    <maxVersion></maxVersion>
+    <jdkPreference>preferJre</jdkPreference>
+    <runtimeBits>64/32</runtimeBits>
+  </jre>
+  <versionInfo>
+    <fileVersion>0.0.0.1</fileVersion>
+    <txtFileVersion>unspecified</txtFileVersion>
+    <fileDescription>gradle-launch4j-example</fileDescription>
+    <copyright>unknown</copyright>
+    <productVersion>0.0.0.1</productVersion>
+    <txtProductVersion>unspecified</txtProductVersion>
+    <productName>gradle-launch4j-example</productName>
+    <companyName></companyName>
+    <internalName>gradle-launch4j-example</internalName>
+    <originalFilename>zimbus.exe</originalFilename>
+    <trademarks></trademarks>
+    <language>ENGLISH_US</language>
+  </versionInfo>
+</launch4jConfig>

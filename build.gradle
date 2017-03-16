@@ -1,0 +1,68 @@
+import com.github.jengelman.gradle.plugins.shadow.transformers.ServiceFileTransformer
+
+plugins {
+    id 'groovy'
+    id 'application'
+    id 'maven-publish'
+    id 'com.github.johnrengelman.shadow' version '1.2.3'
+    id 'edu.sc.seis.launch4j' version '2.3.0'
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+group = 'hotmeatballsoup'
+mainClassName = 'com.me.myapp.Driver'
+
+repositories {
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile(
+        'org.codehaus.groovy:groovy-all:2.4.7'
+        ,'org.slf4j:slf4j-api:1.7.24'
+        ,'org.slf4j:slf4j-simple:1.7.24'
+    )
+}
+
+createAllExecutables.dependsOn shadowJar
+
+manifest {
+    attributes 'Main-Class': mainClassName
+}
+jar {
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+    baseName = 'zimbus'
+}
+
+shadowJar {
+    transform(ServiceFileTransformer) {
+        exclude 'META-INF/*.DSA'
+        exclude 'META-INF/*.RSA'
+        exclude 'LICENSE*'
+    }
+    transform(com.github.jengelman.gradle.plugins.shadow.transformers.AppendingTransformer) {
+        resource = 'reference.conf'
+    }
+    classifier = ''
+}
+
+publishing {
+    publications {
+        shadow(MavenPublication) {
+            from components.shadow
+            artifactId = 'zimbus'
+        }
+    }
+}
+
+launch4j {
+    outfile = 'zimbus.exe'
+    mainClassName = 'com.me.myapp.Driver'
+    icon = 'zimbus.ico'
+    jar = 'build/libs/gradle-launch4j-example.jar'
+}
